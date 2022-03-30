@@ -11,11 +11,14 @@ namespace SingleResponsibilty.Process
     {
         string _DosyaAdi;
         Kisi _kisi;
+        WriteLog logger;
+        
         
         public KisiWriteFile(string dosyaAdi,Kisi kisi)
         {
             _DosyaAdi = dosyaAdi;
             _kisi = kisi;
+            logger = new WriteLog("");
         }
 
         public bool DosyaYaz()
@@ -33,7 +36,8 @@ namespace SingleResponsibilty.Process
             }
             catch (Exception ex)
             {
-                File.WriteAllText("Log.txt", ex.ToString());
+                logger.Mesaj = ex.Message;
+                logger.WriteToLogFile();
                 return false;
             }
         }

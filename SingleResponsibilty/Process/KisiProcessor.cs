@@ -9,6 +9,7 @@ namespace SingleResponsibilty.Process
     public class KisiProcessor
     {
         public Kisi Kisi { get; set; }
+        KisiWriteFile KisiWriter;
         public KisiProcessor(Kisi kisi)
         {
             Kisi = kisi;
@@ -16,7 +17,8 @@ namespace SingleResponsibilty.Process
 
         public void KisiEkle()
         {
-
+            KisiWriter = new KisiWriteFile("KisiKayitlar.txt", Kisi);
+            KisiWriter.DosyaYaz();
         }
     }
 }
